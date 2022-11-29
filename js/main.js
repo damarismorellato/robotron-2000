@@ -1,15 +1,21 @@
-const robotron = document.querySelector('#robotron');
 
+//busca todas as class de controle ajuste(butões - e +)
+const controle = document.querySelectorAll(".controle-ajuste")
 
-const subtrair = document.querySelector('#subtrair');
-const somar = document.querySelector('#somar');
-const braco = document.querySelector('#braco');
+// para cada click no elemento do array controle, onde tiver um - ou + e a class controle-contador, soma ou subtrai a peça escolhida.
+controle.forEach((elemento) => {
+    elemento.addEventListener("click", (evento) => {
+        manipulaDados(evento.target.textContent, evento.target.parentNode)
+        console.log(controle);
+    })
+})
 
-somar.addEventListener('click', (evento) => {
-    braco.value = parseInt(braco.value) + 1;
-    console.log('cliquei');
-});
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector(".controle-contador");
 
-subtrair.addEventListener('click', (evento) => {
-    braco.value = parseInt(braco.value) - 1;
-});
+    if (operacao === "-") {
+        peca.value = parseInt(peca.value) - 1
+    } else {
+        peca.value = parseInt(peca.value) + 1
+    }
+}
