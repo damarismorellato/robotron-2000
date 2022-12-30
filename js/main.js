@@ -3,6 +3,7 @@
 const controle = document.querySelectorAll("[data-controle]")
 const estatistica = document.querySelectorAll("[data-estatistica]")
 
+
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -17,19 +18,19 @@ const pecas = {
         "energia": 0,
         "velocidade": -20
     },
-    "nucleos":{
+    "nucleos": {
         "forca": 0,
         "poder": 7,
         "energia": 48,
         "velocidade": -24
     },
-    "pernas":{
+    "pernas": {
         "forca": 27,
         "poder": 21,
         "energia": -32,
         "velocidade": 42
     },
-    "foguetes":{
+    "foguetes": {
         "forca": 0,
         "poder": 28,
         "energia": 0,
@@ -57,7 +58,18 @@ function manipulaDados(operacao, controle) {
 
 
 function atualizaEstatistica(peca) {
-    estatistica.forEach( (elemento ) => {
+    estatistica.forEach((elemento) => {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
 }
+
+
+
+const botao = document.querySelectorAll("[data-botao");
+
+botao.forEach((elemento) =>{
+    elemento.addEventListener("click", (evento) =>{
+        cor = evento.target.dataset.botao;
+        document.querySelector(".robo").src="img/robotron_"+cor+".png";
+    })
+})
